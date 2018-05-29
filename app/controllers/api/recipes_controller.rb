@@ -15,5 +15,15 @@ class Api::RecipesController < ApplicationController
         render status: 200
     end
 
+    def create
+        @recipe = Recipe.create!(recipe_params)
+        render json: @recipe
+    end
+
+    private
+
+    def recipe_params
+        params.require(:recipe).permit(:name, :story)
+    end
     
 end
