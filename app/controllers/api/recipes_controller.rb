@@ -10,5 +10,10 @@ class Api::RecipesController < ApplicationController
         render json: @recipe
     end
 
+    def destroy
+        @recipe = Recipe.find(params[:id]).destroy
+        render status: 200
+    end
 
+    
 end
