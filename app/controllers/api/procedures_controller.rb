@@ -10,4 +10,10 @@ class Api::ProceduresController < ApplicationController
         render json: @procedure
     end
 
+    def destroy
+        @procedure = Procedure.find(params[:id])
+        @procedure.destroy
+        render status: 200
+    end
+
 end
