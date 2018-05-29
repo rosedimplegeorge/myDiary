@@ -5,5 +5,9 @@ class Api::ProceduresController < ApplicationController
         render json: @procedures
     end
 
+    def show
+        @procedure = Procedure.find(params[:id])
+        render json: @procedure
+    end
 
 end
