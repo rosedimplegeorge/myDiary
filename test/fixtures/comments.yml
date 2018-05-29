@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reviewer_name: MyString
+  review: MyString
+  recipe_id: 1
+  recipe: one
+
+two:
+  reviewer_name: MyString
+  review: MyString
+  recipe_id: 1
+  recipe: two
