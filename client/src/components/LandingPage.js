@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { Jumbotron } from 'react-bootstrap';
 import { Image } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Calendar from 'react-calendar';
 import AppTitle from './styledComponents/AppTitle';
 //import CalendarStyle from './components/styledComponents/CalendarStyle';
@@ -26,7 +27,7 @@ class LandingPage extends Component {
           <AppTitle>
             <h1>My Diary</h1>
             <p>
-              <Button bsStyle="primary">Recipes</Button>
+              <Link to="/recipes"><Button bsStyle="primary">Recipes</Button></Link>
               <Button bsStyle="primary" onClick={this.toggleCalendar}>Calendar</Button>
               {this.state.calendarOpen ? (
                 <Calendar
