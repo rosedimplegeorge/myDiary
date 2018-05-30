@@ -16,4 +16,23 @@ class Api::CommentsController < ApplicationController
         render status: 200
     end
 
+    def create
+        @recipe = Recipe.find(params[:recipe_id])
+        @comment = Comment.create!(comment_params)
+        render json: @comment
+    end
+
+    def update
+        @recipe = Recipe.find(params[:recipe_id])
+        @comment = Comment.find(params[:id])
+        @comment.update!(comment_params)
+        render json: @comment
+    end
+
+    private
+
+    def comment_params
+        params.require(:comment).permit(:reviewer_name, :review, :recipe_id)
+    end
+
 end
