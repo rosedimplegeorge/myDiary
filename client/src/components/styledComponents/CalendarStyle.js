@@ -1,7 +1,7 @@
-// import styled from 'styled-components'
+import styled from 'styled-components'
 
-// const CalendarStyle = styled.div`
-// font-size: 5px;
-// `
+const CalendarStyle = styled.div`
 
-// export default CalendarStyle
+`
+
+export default CalendarStyle
