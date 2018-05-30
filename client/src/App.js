@@ -1,18 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
-
+import RecipesList from './components/RecipesList';
 class App extends Component {
-
-  state = {
-    date: new Date(),
-    calendarOpen: false
-  }
-  onChange = date => this.setState({ date })
-
-  toggleCalendar = () => {
-    this.setState({calendarOpen: !this.state.calendarOpen})
-  } 
+  
   render() {
     
     return (
@@ -21,6 +12,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path="/" component={LandingPage}/>
+            <Route exact path="/recipes" component={RecipesList}/>
           </Switch>
         </div>
       </Router>
