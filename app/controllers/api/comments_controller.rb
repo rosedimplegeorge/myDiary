@@ -10,4 +10,10 @@ class Api::CommentsController < ApplicationController
         render json: @comment
     end
 
+    def destroy
+        @comment = Comment.find(params[:id])
+        @comment.destroy
+        render status: 200
+    end
+
 end
