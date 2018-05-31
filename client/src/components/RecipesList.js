@@ -8,7 +8,8 @@ import { Button } from 'react-bootstrap';
 class RecipesList extends Component {
 
     state = {
-        recipes:[]
+        recipes:[],
+        showNewForm: false
     }
 
     componentDidMount(){
@@ -35,6 +36,11 @@ class RecipesList extends Component {
         })
     }
 
+    toggleShowNewForm = () => {
+        console.log("Toggle Function is Called:")
+        this.setState({showNewForm: !this.state.showNewForm})
+    }
+
 
     render() {
 
@@ -45,7 +51,7 @@ class RecipesList extends Component {
                         <Link to={`/recipes/${recipe.id}`}><h4>{recipe.name}</h4></Link>
                         </Panel>
                         <p>{recipe.story}</p>
-                        <Button bsStyle="danger" onClick={() => {this.deleteRecipe(recipe.id)}}>Danger</Button> 
+                        <Button bsStyle="danger" onClick={() => {this.deleteRecipe(recipe.id)}}>Delete</Button> 
                     </Accordion>
                     </div>
         })
@@ -57,6 +63,7 @@ class RecipesList extends Component {
                 <h1>Recipe List</h1>
                 <h4>{RecipesList}</h4>
                 <Link to='/'><Button bsStyle="info">Home</Button></Link>
+                <Button bsStyle="success" onClick={this.toggleShowNewForm}>Add New Recipe</Button>
             </div>
         );
     }
