@@ -33,6 +33,7 @@ class RecipesList extends Component {
         axios.delete(`/api/recipes/${id}`)
         .then((response) => {
             console.log(response)
+            this.getAllRecipes()
         })
     }
 
