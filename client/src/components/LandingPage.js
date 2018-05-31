@@ -7,7 +7,6 @@ import Calendar from 'react-calendar';
 import AppTitle from './styledComponents/AppTitle';
 //import CalendarStyle from './components/styledComponents/CalendarStyle';
 
-
 class LandingPage extends Component {
 
   state = {

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
+import { Accordion } from 'react-bootstrap';
+import { Panel } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 class RecipesList extends Component {
 
@@ -28,19 +31,21 @@ class RecipesList extends Component {
     render() {
 
         const RecipesList = this.state.recipes.map(recipe => {
-            console.log('Rendering Recipes :', this.state.recipes.length)
             return <div key={recipe.id}>
-                        <Link to={`/recipes/${recipe.id}`}><h2>{recipe.name}</h2><p>{recipe.story}</p></Link>
+                    <Accordion>
+                        <Panel header={recipe.name}>
+                        <Link to={`/recipes/${recipe.id}`}><h4>{recipe.name}</h4></Link>
+                        </Panel>
+                        <p>{recipe.story}</p>
+                    </Accordion>
                     </div>
-                    if(this.state.error){
-                        return<div>{this.state.error}</div>
-                    }
         })
-            console.log('Recipe List',RecipesList)
+
         return (
             <div>
                 <h1>Recipe List</h1>
                 <h4>{RecipesList}</h4>
+                <Link to='/'><Button bsStyle="info">Home</Button></Link>
             </div>
         );
     }
