@@ -87,7 +87,9 @@ class RecipesList extends Component {
             </div>
         })
 
-
+        // const SpecificRecipe = props => {
+        //     return<SpecificRecipe recipes={this.state.recipes} {...props} />
+        //   }
 
         return (
             <div>
