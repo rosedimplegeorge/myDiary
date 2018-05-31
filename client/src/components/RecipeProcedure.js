@@ -9,8 +9,6 @@ class RecipeProcedure extends Component {
         comments: []
     }
 
-    
-
     componentDidMount(){
         const recipeId = this.props.match.params.recipe_id
         this.getProcedureAndCommentData(recipeId)
