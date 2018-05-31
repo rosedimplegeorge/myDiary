@@ -81,6 +81,7 @@ class SpecificRecipe extends Component {
                 <h4>{this.state.recipe.name}</h4>
                 <h6>{this.state.recipe.story}</h6>
                 <Link to='/'><Button bsStyle="info">Home</Button></Link>
+                <Link to={`/recipes/${this.state.recipe.id}/procedures`}><Button bsStyle="info">Click to see how to make it</Button></Link>
                 <Button bsStyle="success" onClick={this.toggleShowEditForm}>Update Recipe</Button>
                 {this.state.showEditForm ?
                     (<form onSubmit={this.handleSubmit}>
