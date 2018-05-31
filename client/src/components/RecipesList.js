@@ -37,9 +37,12 @@ class RecipesList extends Component {
                         <Link to={`/recipes/${recipe.id}`}><h4>{recipe.name}</h4></Link>
                         </Panel>
                         <p>{recipe.story}</p>
+                        <Button bsStyle="danger">Delete</Button>
                     </Accordion>
                     </div>
         })
+
+
 
         return (
             <div>
