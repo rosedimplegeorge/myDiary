@@ -6,7 +6,8 @@ import axios from 'axios';
 class SpecificRecipe extends Component {
 
     state = {
-        recipe: {}
+        recipe: {},
+        showEditForm: false
     }
 
     handleChange = (event) => {
@@ -17,6 +18,11 @@ class SpecificRecipe extends Component {
     
     componentDidMount = () => {
         this.getSpecificRecipe()
+    }
+
+    toggleShowEditForm = () => {
+        console.log("Toggle -EDIT -Function is Called:")
+        this.setState({ showEditForm: !this.state.showEditForm })
     }
 
     getSpecificRecipe = () => {
@@ -40,7 +46,7 @@ class SpecificRecipe extends Component {
             console.log('edit user return: ', res.data)
             const recipe = res.data
             this.setState({recipe})
-            
+            this.toggleShowEditForm()
         })
         .catch(error => {
             console.log(error)
