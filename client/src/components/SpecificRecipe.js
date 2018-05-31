@@ -15,6 +15,25 @@ class SpecificRecipe extends Component {
         recipe[event.target.name] = event.target.value;
         this.setState({ recipe });
       };
+
+      handleSubmit = (event) => {
+        event.preventDefault()
+        const transferdata = {
+            name: this.state.recipe.name,
+            story: this.state.recipe.story
+        }
+        console.log("From submit function transferdata: ", transferdata)
+        axios.put(`/api/recipes/${this.state.recipe.id}`, transferdata)
+        .then((res) => {
+            console.log('From Server', res.data)
+            const recipe = {...this.state.recipe}
+            this.setState({ recipe })
+        }).then(() => {
+            this.toggleShowEditForm()
+        })
+        
+    }
+
     
     componentDidMount = () => {
         this.getSpecificRecipe()
@@ -61,26 +80,22 @@ class SpecificRecipe extends Component {
                 <h1>SpecificRecipe</h1>
                 <h4>{this.state.recipe.name}</h4>
                 <h6>{this.state.recipe.story}</h6>
-                <form onSubmit={this.editRecipe}>
-                <div>
-                    <label htmlFor="name">Name: </label>
-                    <input
-                    onChange={this.handleChange}
-                    type="text"
-                    name="name"
-                    value={this.state.recipe.name}
-                    />
-                </div>
-                <label htmlFor="name">Story: </label>
-                    <input
-                    onChange={this.handleChange}
-                    type="text"
-                    name="story"
-                    value={this.state.recipe.story}
-                    />
-                <input type="submit" value="Update Recipe" />
-                </form>
                 <Link to='/'><Button bsStyle="info">Home</Button></Link>
+                <Button bsStyle="success" onClick={this.toggleShowEditForm}>Update Recipe</Button>
+                {this.state.showEditForm ?
+                    (<form onSubmit={this.handleSubmit}>
+                        <div>
+                            <label htmlFor="name">Name: </label>
+                            <input onChange={this.handleChange} type="text" name="name" value={this.state.recipe.name}/>
+                        </div>
+                        <div>
+                            <label htmlFor="story ">Story: </label>
+                            <input onChange={this.handleChange} type="text" name="story" value={this.state.recipe.story}/>
+                        </div>
+                        <button>Submit</button>
+                    </form>)
+                    : null}
+                
             </div>
         );
     }
