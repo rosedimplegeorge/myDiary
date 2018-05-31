@@ -4,42 +4,64 @@ import axios from 'axios';
 import { Accordion } from 'react-bootstrap';
 import { Panel } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import NewRecipeForm from './NewRecipeForm';
 
 class RecipesList extends Component {
 
     state = {
-        recipes:[],
-        showNewForm: false
+        recipes: [],
+        showNewForm: false,
+        newRecipe: {
+            name: '',
+            story: ''
+        }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.getAllRecipes()
     }
 
-    getAllRecipes = () =>{
+    getAllRecipes = () => {
         console.log('getAllRecipes called:')
         axios.get('/api/recipes')
-        .then(res => {
-            console.log('Saving Recipes to state:', res.data)
-            this.setState({recipes: res.data})
-        })
-        .catch(error =>{
-            console.log(error)
-        })
+            .then(res => {
+                console.log('Saving Recipes to state:', res.data)
+                this.setState({ recipes: res.data })
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     deleteRecipe = (id) => {
         console.log("Delete Recipe fi=unction is called :")
         axios.delete(`/api/recipes/${id}`)
-        .then((response) => {
-            console.log(response)
-            this.getAllRecipes()
-        })
+            .then((response) => {
+                console.log(response)
+                this.getAllRecipes()
+            })
     }
 
     toggleShowNewForm = () => {
         console.log("Toggle Function is Called:")
-        this.setState({showNewForm: !this.state.showNewForm})
+        this.setState({ showNewForm: !this.state.showNewForm })
+    }
+
+    handleChange = (event) => {
+        const name = event.target.name
+        const newRecipe = { ...this.state }
+        newRecipe[name] = event.target.value
+        this.setState({ newRecipe })
+    }
+
+    handleSubmit = async (event) => {
+        event.preventDefault()
+        const transferdata = {
+            name: this.state.newRecipe.name,
+            story: this.state.newRecipe.story
+        }
+        console.log("From submit function transferdata: ", transferdata)
+        await axios.post(`/api/recipes`, transferdata);
     }
 
 
@@ -47,14 +69,14 @@ class RecipesList extends Component {
 
         const RecipesList = this.state.recipes.map(recipe => {
             return <div key={recipe.id}>
-                    <Accordion>
-                        <Panel header={recipe.name}>
+                <Accordion>
+                    <Panel header={recipe.name}>
                         <Link to={`/recipes/${recipe.id}`}><h4>{recipe.name}</h4></Link>
-                        </Panel>
-                        <p>{recipe.story}</p>
-                        <Button bsStyle="danger" onClick={() => {this.deleteRecipe(recipe.id)}}>Delete</Button> 
-                    </Accordion>
-                    </div>
+                    </Panel>
+                    <p>{recipe.story}</p>
+                    <Button bsStyle="danger" onClick={() => { this.deleteRecipe(recipe.id) }}>Delete</Button>
+                </Accordion>
+            </div>
         })
 
 
@@ -65,6 +87,20 @@ class RecipesList extends Component {
                 <h4>{RecipesList}</h4>
                 <Link to='/'><Button bsStyle="info">Home</Button></Link>
                 <Button bsStyle="success" onClick={this.toggleShowNewForm}>Add New Recipe</Button>
+
+                {this.state.showNewForm ?
+                    (<form onSubmit={this.handleSubmit}>
+                        <div>
+                            <label htmlFor="name">Name: </label>
+                            <input onChange={this.handleChange} type="text" name="name" />
+                        </div>
+                        <div>
+                            <label htmlFor="story ">Story: </label>
+                            <input onChange={this.handleChange} type="text" name="story" />
+                        </div>
+                    </form>)
+                    : null}
+
             </div>
         );
     }
