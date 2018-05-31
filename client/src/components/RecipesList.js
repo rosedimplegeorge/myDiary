@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Accordion } from 'react-bootstrap';
 import { Panel } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
-import NewRecipeForm from './NewRecipeForm';
 
 class RecipesList extends Component {
 
@@ -49,19 +48,28 @@ class RecipesList extends Component {
 
     handleChange = (event) => {
         const name = event.target.name
-        const newRecipe = { ...this.state }
+        const newRecipe = { ...this.state.newRecipe }
         newRecipe[name] = event.target.value
         this.setState({ newRecipe })
     }
 
-    handleSubmit = async (event) => {
+    handleSubmit = (event) => {
         event.preventDefault()
         const transferdata = {
             name: this.state.newRecipe.name,
             story: this.state.newRecipe.story
         }
         console.log("From submit function transferdata: ", transferdata)
-        await axios.post(`/api/recipes`, transferdata);
+        axios.post(`/api/recipes`, transferdata)
+        .then((res) => {
+            console.log('From Server', res.data)
+            const recipes = [...this.state.recipes]
+            recipes.push(res.data)
+            this.setState({ recipes })
+        }).then(() => {
+            this.toggleShowNewForm()
+        })
+        
     }
 
 
@@ -98,6 +106,7 @@ class RecipesList extends Component {
                             <label htmlFor="story ">Story: </label>
                             <input onChange={this.handleChange} type="text" name="story" />
                         </div>
+                        <button>Submit</button>
                     </form>)
                     : null}
 
