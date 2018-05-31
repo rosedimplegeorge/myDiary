@@ -8,6 +8,12 @@ class SpecificRecipe extends Component {
     state = {
         recipe: {}
     }
+
+    handleChange = (event) => {
+        const recipe = { ...this.state.recipe };
+        recipe[event.target.name] = event.target.value;
+        this.setState({ recipe });
+      };
     
     componentDidMount = () => {
         this.getSpecificRecipe()
@@ -24,13 +30,50 @@ class SpecificRecipe extends Component {
         })
     }
 
+    editRecipe = (event)  => {
+        event.preventDefault()
+        const recipeId = this.state.recipe.id
+        const payload = this.state.recipe
+        console.log('Edit Recipe is Called')
+        axios.put(`/api/recipes/${recipeId}`, payload)
+        .then((res) => {
+            console.log('edit user return: ', res.data)
+            const recipe = res.data
+            this.setState({recipe})
+            
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
+
+
     render() {
         return (
             <div>
                 <h1>SpecificRecipe</h1>
                 <h4>{this.state.recipe.name}</h4>
                 <h6>{this.state.recipe.story}</h6>
-
+                <form onSubmit={this.editRecipe}>
+                <div>
+                    <label htmlFor="name">Name: </label>
+                    <input
+                    onChange={this.handleChange}
+                    type="text"
+                    name="name"
+                    value={this.state.recipe.name}
+                    />
+                </div>
+                <label htmlFor="name">Story: </label>
+                    <input
+                    onChange={this.handleChange}
+                    type="text"
+                    name="story"
+                    value={this.state.recipe.story}
+                    />
+                <input type="submit" value="Update Recipe" />
+                </form>
                 <Link to='/'><Button bsStyle="info">Home</Button></Link>
             </div>
         );
