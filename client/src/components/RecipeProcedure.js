@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class RecipeProcedure extends Component {
     state = {
@@ -20,6 +21,7 @@ class RecipeProcedure extends Component {
             const procedureResponse = await axios.get(`/api/recipes/${recipeId}/procedures`)
             const commentResponse = await axios.get(`/api/recipes/${recipeId}/comments`)
             console.log('ProcedureResponse: ', procedureResponse.data)
+            console.log('Comment Response: ', commentResponse.data)
             await this.setState({
                 procedures: procedureResponse.data,
                 comments: commentResponse.data
@@ -29,6 +31,17 @@ class RecipeProcedure extends Component {
             console.log(error)
             await this.setState({ error: error.message })
         }
+    }
+
+    removeComment = (comment) => {
+        console.log('Renove Comment function is called ')
+        axios.delete(`/api/recipes/${comment.recipe_id}/comments/${comment.id}`)
+            .then(() => {
+                this.getProcedureAndCommentData(comment.recipe_id)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     render() {
@@ -51,7 +64,7 @@ class RecipeProcedure extends Component {
                 <div key={index}>
                     <h2>{comment.reviewer_name}</h2>
                     <h4>{comment.review}</h4>
-                    <Button bsStyle="danger">Delete Comment</Button>
+                    <Button bsStyle="danger" onClick={() => {this.removeComment(comment)}}>Delete Comment</Button>
                 </div>
             )
         })
