@@ -8,7 +8,8 @@ class RecipeProcedure extends Component {
     state = {
         recipes: [],
         procedures: [],
-        comments: []
+        comments: [],
+        showNewForm: false
     }
 
     componentDidMount(){
@@ -31,6 +32,10 @@ class RecipeProcedure extends Component {
             console.log(error)
             await this.setState({ error: error.message })
         }
+    }
+
+    toggleShowNewForm = () => {
+        this.setState({ showNewForm: !this.state.showNewForm })
     }
 
     removeComment = (comment) => {
@@ -74,7 +79,7 @@ class RecipeProcedure extends Component {
                 <h1>RecipeProcedure</h1>
                 {procedureData}
                 <h1>Comments</h1>
-                <Button bsStyle="success">Post a Comment</Button>
+                <Button bsStyle="success" onClick={this.toggleShowNewForm}>Post a Comment</Button>
                 {commentData}
             </div>
         );
