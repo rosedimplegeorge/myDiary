@@ -5,7 +5,7 @@ import { Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Calendar from 'react-calendar';
 import AppTitle from './styledComponents/AppTitle';
-import Weather from './Weather'
+// import Weather from './Weather'
 //import CalendarStyle from './components/styledComponents/CalendarStyle';
 
 class LandingPage extends Component {
