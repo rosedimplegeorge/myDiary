@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { Button } from 'react-bootstrap';
 
 class RecipeProcedure extends Component {
     state = {
@@ -36,7 +37,7 @@ class RecipeProcedure extends Component {
         const procedureData = this.state.procedures.map((procedure, index) => {
             return (
                 <div key={index}>
-                    <h4>{procedure.title}</h4>
+                    <h2>{procedure.title}</h2>
                     <h4>{procedure.description}</h4>
                     <ImageStyle>
                     <img src={procedure.photo_url} alt="404NotFound" />
@@ -48,8 +49,9 @@ class RecipeProcedure extends Component {
         const commentData = this.state.comments.map((comment, index) => {
             return (
                 <div key={index}>
-                    <h4>{comment.reviewer_name}</h4>
+                    <h2>{comment.reviewer_name}</h2>
                     <h4>{comment.review}</h4>
+                    <Button bsStyle="danger">Delete Comment</Button>
                 </div>
             )
         })
@@ -58,6 +60,8 @@ class RecipeProcedure extends Component {
             <div>
                 <h1>RecipeProcedure</h1>
                 {procedureData}
+                <h1>Comments</h1>
+                <Button bsStyle="success">Post a Comment</Button>
                 {commentData}
             </div>
         );

@@ -55,22 +55,22 @@ class SpecificRecipe extends Component {
         })
     }
 
-    editRecipe = (event)  => {
-        event.preventDefault()
-        const recipeId = this.state.recipe.id
-        const payload = this.state.recipe
-        console.log('Edit Recipe is Called')
-        axios.put(`/api/recipes/${recipeId}`, payload)
-        .then((res) => {
-            console.log('edit user return: ', res.data)
-            const recipe = res.data
-            this.setState({recipe})
-            this.toggleShowEditForm()
-        })
-        .catch(error => {
-            console.log(error)
-        })
-    }
+    // editRecipe = (event)  => {
+    //     event.preventDefault()
+    //     const recipeId = this.state.recipe.id
+    //     const payload = this.state.recipe
+    //     console.log('Edit Recipe is Called')
+    //     axios.put(`/api/recipes/${recipeId}`, payload)
+    //     .then((res) => {
+    //         console.log('edit user return: ', res.data)
+    //         const recipe = res.data
+    //         this.setState({recipe})
+    //         this.toggleShowEditForm()
+    //     })
+    //     .catch(error => {
+    //         console.log(error)
+    //     })
+    // }
 
 
 
