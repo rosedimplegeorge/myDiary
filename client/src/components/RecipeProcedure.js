@@ -54,8 +54,6 @@ class RecipeProcedure extends Component {
             )
         })
 
-
-
         return (
             <div>
                 <h1>RecipeProcedure</h1>

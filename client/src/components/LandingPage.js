@@ -5,6 +5,7 @@ import { Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Calendar from 'react-calendar';
 import AppTitle from './styledComponents/AppTitle';
+import Weather from './Weather'
 //import CalendarStyle from './components/styledComponents/CalendarStyle';
 
 class LandingPage extends Component {
@@ -27,6 +28,7 @@ class LandingPage extends Component {
             <h1>My Diary</h1>
             <p>
               <Link to="/recipes"><Button bsStyle="primary">Recipes</Button></Link>
+              <Button>Weather</Button>
               <Button bsStyle="primary" onClick={this.toggleCalendar}>Calendar</Button>
               {this.state.calendarOpen ? (
                 <Calendar
