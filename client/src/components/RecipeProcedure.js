@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import NewComment from './NewComment';
 
 class RecipeProcedure extends Component {
     state = {
@@ -36,6 +37,17 @@ class RecipeProcedure extends Component {
 
     toggleShowNewForm = () => {
         this.setState({ showNewForm: !this.state.showNewForm })
+    }
+
+    createPost = (newComment) => {
+        console.log('create new comment called')
+        axios.post('/api/recipes/:recipe_id/comments', { newComment })
+            .then((res) => {
+                console.log(res.data)
+                const comments = [this.state.comments]
+                comments.push(res.data)
+                this.setState({ comments })
+            })
     }
 
     removeComment = (comment) => {
@@ -80,6 +92,7 @@ class RecipeProcedure extends Component {
                 {procedureData}
                 <h1>Comments</h1>
                 <Button bsStyle="success" onClick={this.toggleShowNewForm}>Post a Comment</Button>
+                {this.state.showNewForm ? <NewComment toggleShowNewForm={this.toggleShowNewForm} recipeId={this.props.match.params.recipe_id} getProcedureAndCommentData={this.getProcedureAndCommentData}/> : null}
                 {commentData}
             </div>
         );
