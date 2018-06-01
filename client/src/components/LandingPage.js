@@ -28,7 +28,6 @@ class LandingPage extends Component {
             <h1>My Diary</h1>
             <p>
               <Link to="/recipes"><Button bsStyle="primary">Recipes</Button></Link>
-              <Weather/>
               <Button bsStyle="primary" onClick={this.toggleCalendar}>Calendar</Button>
               {this.state.calendarOpen ? (
                 <Calendar
