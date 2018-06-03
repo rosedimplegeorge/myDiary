@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Calendar from 'react-calendar';
 import AppTitle from './styledComponents/AppTitle'; 
 import Weather from './Weather';
+import DivStyle from './styledComponents/DivStyle'
 
 class LandingPage extends Component {
 
@@ -22,9 +23,10 @@ class LandingPage extends Component {
     
     return (
       <div>
+        <DivStyle>
         <Jumbotron>
           <AppTitle>
-            <h1>My Diary<h6><Weather/></h6></h1>
+            <h1>My Diary<Weather/></h1>
             <p>
               <Link to="/recipes"><Button bsStyle="primary">Recipes</Button></Link>
               <Button bsStyle="primary" onClick={this.toggleCalendar}>Calendar</Button>
@@ -38,6 +40,7 @@ class LandingPage extends Component {
           </AppTitle>
         </Jumbotron>
         <Image src="https://i.imgur.com/xo1P2k0.jpg" responsive />
+      </DivStyle>
       </div>
     );
   }

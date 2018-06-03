@@ -5,7 +5,8 @@ import { Accordion } from 'react-bootstrap';
 import { Panel } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Jumbotron } from 'react-bootstrap';
-import ButtonStyle from './styledComponents/ButtonStyle'
+import ButtonStyle from './styledComponents/ButtonStyle';
+import DivStyle from './styledComponents/DivStyle';
 
 class RecipesList extends Component {
 
@@ -82,8 +83,8 @@ class RecipesList extends Component {
                 <Accordion>
                     <Panel header={recipe.name}>
                         <ButtonStyle>
-                        <Link to={`/recipes/${recipe.id}`}><h4>{recipe.name}</h4></Link>
-                        <Button bsStyle="danger" onClick={() => { this.deleteRecipe(recipe.id) }}>Delete</Button>
+                        <Link to={`/recipes/${recipe.id}`}><h2>{recipe.name}</h2></Link>
+                        <Button bsStyle="danger" bsSize="xsmall" onClick={() => { this.deleteRecipe(recipe.id) }}>Delete</Button>
                         </ButtonStyle>
                     </Panel>
                     {/* <p>{recipe.story}</p> */}
@@ -94,9 +95,10 @@ class RecipesList extends Component {
 
         return (
             <div>
+                <DivStyle>
                 <Jumbotron>
                 <ButtonStyle>
-                <h1>Recipe I have so far !</h1>
+                <h1>Recipes I have so far !</h1>
                 <Link to='/'><Button bsStyle="info">Home</Button></Link>
                 </ButtonStyle>
                 </Jumbotron>
@@ -118,7 +120,8 @@ class RecipesList extends Component {
                     </form>)
                     : null}
                     </ButtonStyle> 
-                 <h4>{RecipesList}</h4>      
+                 <h4>{RecipesList}</h4>   
+                 </DivStyle>   
             </div>
         );
     }

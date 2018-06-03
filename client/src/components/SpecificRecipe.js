@@ -3,7 +3,8 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Jumbotron } from 'react-bootstrap';
-import ButtonStyle from './styledComponents/ButtonStyle'
+import ButtonStyle from './styledComponents/ButtonStyle';
+import DivStyle from './styledComponents/DivStyle';
 
 class SpecificRecipe extends Component {
 
@@ -61,6 +62,7 @@ class SpecificRecipe extends Component {
     render() {
         return (
             <div>
+                <DivStyle>
                 <Jumbotron>
                 <ButtonStyle>
                 <h1>Story behind this Specific Recipe !</h1>
@@ -88,6 +90,7 @@ class SpecificRecipe extends Component {
                  <ButtonStyle> 
                 <Link to={`/recipes/${this.state.recipe.id}/procedures`}><Button bsStyle="info">Click to see how to make it</Button></Link>
                 </ButtonStyle>
+                </DivStyle>
             </div>
         );
     }
