@@ -69,8 +69,7 @@ class SpecificRecipe extends Component {
                 </Jumbotron>
                 <h4>{this.state.recipe.name}</h4>
                 <h6>{this.state.recipe.story}</h6>
-                
-                <Link to={`/recipes/${this.state.recipe.id}/procedures`}><Button bsStyle="info">Click to see how to make it</Button></Link>
+                <ButtonStyle>
                 <Button bsStyle="success" onClick={this.toggleShowEditForm}>Update Recipe</Button>
                 {this.state.showEditForm ?
                     (<form onSubmit={this.handleSubmit}>
@@ -85,7 +84,10 @@ class SpecificRecipe extends Component {
                         <button>Submit</button>
                     </form>)
                     : null}
-                
+                 </ButtonStyle>  
+                 <ButtonStyle> 
+                <Link to={`/recipes/${this.state.recipe.id}/procedures`}><Button bsStyle="info">Click to see how to make it</Button></Link>
+                </ButtonStyle>
             </div>
         );
     }

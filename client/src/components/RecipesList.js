@@ -81,12 +81,12 @@ class RecipesList extends Component {
             return <div key={recipe.id}>
                 <Accordion>
                     <Panel header={recipe.name}>
+                        <ButtonStyle>
                         <Link to={`/recipes/${recipe.id}`}><h4>{recipe.name}</h4></Link>
+                        <Button bsStyle="danger" onClick={() => { this.deleteRecipe(recipe.id) }}>Delete</Button>
+                        </ButtonStyle>
                     </Panel>
-                    <p>{recipe.story}</p>
-                    <ButtonStyle>
-                    <Button bsStyle="danger" onClick={() => { this.deleteRecipe(recipe.id) }}>Delete</Button>
-                    </ButtonStyle>
+                    {/* <p>{recipe.story}</p> */}
                 </Accordion>
             </div>
         })
