@@ -84,7 +84,9 @@ class RecipesList extends Component {
                         <Link to={`/recipes/${recipe.id}`}><h4>{recipe.name}</h4></Link>
                     </Panel>
                     <p>{recipe.story}</p>
+                    <ButtonStyle>
                     <Button bsStyle="danger" onClick={() => { this.deleteRecipe(recipe.id) }}>Delete</Button>
+                    </ButtonStyle>
                 </Accordion>
             </div>
         })
@@ -99,7 +101,7 @@ class RecipesList extends Component {
                 </ButtonStyle>
                 </Jumbotron>
                 
-               
+                <ButtonStyle>
                 <Button bsStyle="success" onClick={this.toggleShowNewForm}>Add New Recipe</Button>
 
                 {this.state.showNewForm ?
@@ -115,7 +117,8 @@ class RecipesList extends Component {
                         <button>Submit</button>
                     </form>)
                     : null}
-                 <h4>{RecipesList}</h4>       
+                    </ButtonStyle> 
+                 <h4>{RecipesList}</h4>      
             </div>
         );
     }

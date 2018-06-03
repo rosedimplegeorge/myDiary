@@ -64,7 +64,7 @@ class RecipeProcedure extends Component {
 
     render() {
         console.log(this.state.procedures)
-        const procedureId = this.props.match.params.recipe_id;
+        // const procedureId = this.props.match.params.recipe_id;
         const procedureData = this.state.procedures.map((procedure, index) => {
             return (
                 <div key={index}>
