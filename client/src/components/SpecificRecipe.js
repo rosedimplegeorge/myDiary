@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Jumbotron } from 'react-bootstrap';
+import ButtonStyle from './styledComponents/ButtonStyle'
 
 class SpecificRecipe extends Component {
 
@@ -61,8 +62,10 @@ class SpecificRecipe extends Component {
         return (
             <div>
                 <Jumbotron>
+                <ButtonStyle>
                 <h1>SpecificRecipe</h1>
-                <Link to='/'><Button bsStyle="info">Home</Button></Link>
+                    <Link to='/'><Button bsStyle="info">Home</Button></Link>
+                </ButtonStyle>
                 </Jumbotron>
                 <h4>{this.state.recipe.name}</h4>
                 <h6>{this.state.recipe.story}</h6>

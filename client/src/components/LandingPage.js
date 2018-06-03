@@ -4,8 +4,8 @@ import { Jumbotron } from 'react-bootstrap';
 import { Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Calendar from 'react-calendar';
-import AppTitle from './styledComponents/AppTitle';
-// import Weather from './Weather'
+import AppTitle from './styledComponents/AppTitle'; 
+import Weather from './Weather'
 //import CalendarStyle from './components/styledComponents/CalendarStyle';
 
 class LandingPage extends Component {
@@ -25,7 +25,8 @@ class LandingPage extends Component {
       <div>
         <Jumbotron>
           <AppTitle>
-            <h1>My Diary</h1>
+            <h1>My Diary<h6><Weather/></h6></h1>
+            
             <p>
               <Link to="/recipes"><Button bsStyle="primary">Recipes</Button></Link>
               <Button bsStyle="primary" onClick={this.toggleCalendar}>Calendar</Button>

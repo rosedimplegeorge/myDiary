@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import NewComment from './NewComment';
 import { Jumbotron } from 'react-bootstrap';
+import ButtonStyle from './styledComponents/ButtonStyle'
 
 class RecipeProcedure extends Component {
     state = {
@@ -89,12 +90,16 @@ class RecipeProcedure extends Component {
         return (
             <div>
                 <Jumbotron>
-                <h1>RecipeProcedure</h1>
+                <ButtonStyle>
+                <h1>RecipeProcedure</h1> 
                 <Link to='/'><Button bsStyle="info">Home</Button></Link>
+                </ButtonStyle>
                 </Jumbotron>
                 {procedureData}
                 <Jumbotron>
+                <ButtonStyle>
                 <h1>Comments</h1>
+                </ButtonStyle>
                 </Jumbotron>
                 <Button bsStyle="success" onClick={this.toggleShowNewForm}>Post a Comment</Button>
                 {this.state.showNewForm ? <NewComment toggleShowNewForm={this.toggleShowNewForm} recipeId={this.props.match.params.recipe_id} getProcedureAndCommentData={this.getProcedureAndCommentData}/> : null}

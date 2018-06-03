@@ -5,6 +5,7 @@ import { Accordion } from 'react-bootstrap';
 import { Panel } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Jumbotron } from 'react-bootstrap';
+import ButtonStyle from './styledComponents/ButtonStyle'
 
 class RecipesList extends Component {
 
@@ -92,10 +93,12 @@ class RecipesList extends Component {
         return (
             <div>
                 <Jumbotron>
+                <ButtonStyle>
                 <h1>Recipe List</h1>
                 <Link to='/'><Button bsStyle="info">Home</Button></Link>
+                </ButtonStyle>
                 </Jumbotron>
-                <h4>{RecipesList}</h4>
+                
                
                 <Button bsStyle="success" onClick={this.toggleShowNewForm}>Add New Recipe</Button>
 
@@ -112,7 +115,7 @@ class RecipesList extends Component {
                         <button>Submit</button>
                     </form>)
                     : null}
-
+                 <h4>{RecipesList}</h4>       
             </div>
         );
     }

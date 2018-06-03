@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import RecipesList from './components/RecipesList';
 import SpecificRecipe from './components/SpecificRecipe';
-import RecipeProcedure from './components/RecipeProcedure'
+import RecipeProcedure from './components/RecipeProcedure';
+
+
 class App extends Component {
 
   render() {
