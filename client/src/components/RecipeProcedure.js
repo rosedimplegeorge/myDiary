@@ -7,6 +7,7 @@ import NewComment from './NewComment';
 import { Jumbotron } from 'react-bootstrap';
 import ButtonStyle from './styledComponents/ButtonStyle';
 import DivStyle from './styledComponents/DivStyle';
+import TextStyle from './styledComponents/TextStyle'
 
 class RecipeProcedure extends Component {
     state = {
@@ -99,7 +100,9 @@ class RecipeProcedure extends Component {
                 <Link to='/'><Button bsStyle="info">Home</Button></Link>
                 </ButtonStyle>
                 </Jumbotron>
+                <TextStyle>
                     {procedureData}
+                </TextStyle>
                 <Jumbotron>
                     <ButtonStyle>
                         <h1>Comments</h1>
@@ -109,7 +112,9 @@ class RecipeProcedure extends Component {
                     <Button bsStyle="success" onClick={this.toggleShowNewForm}>Post a Comment</Button>
                         {this.state.showNewForm ? <NewComment toggleShowNewForm={this.toggleShowNewForm} recipeId={this.props.match.params.recipe_id} getProcedureAndCommentData={this.getProcedureAndCommentData}/> : null}
                     </ButtonStyle>
+                    <TextStyle>
                         {commentData}
+                    </TextStyle>
                 </DivStyle>        
             </div>
         );

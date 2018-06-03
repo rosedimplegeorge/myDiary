@@ -11,7 +11,7 @@ class Weather extends Component {
     }
 
     componentDidMount(){
-        axios.get('https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%202502265&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys')
+        axios.get('https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%2012770723&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys')
              .then((response) => {
                  console.log('Response data:', response)
                const savedTemp = response.data.query.results.channel.item.condition.temp;

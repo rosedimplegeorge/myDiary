@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Jumbotron } from 'react-bootstrap';
 import ButtonStyle from './styledComponents/ButtonStyle';
 import DivStyle from './styledComponents/DivStyle';
+import TextStyle from './styledComponents/TextStyle'
 
 class SpecificRecipe extends Component {
 
@@ -70,7 +71,9 @@ class SpecificRecipe extends Component {
                 </ButtonStyle>
                 </Jumbotron>
                 <h4>{this.state.recipe.name}</h4>
+                <TextStyle>
                 <h6>{this.state.recipe.story}</h6>
+                </TextStyle>
                 <ButtonStyle>
                 <Button bsStyle="success" onClick={this.toggleShowEditForm}>Update Recipe</Button>
                 {this.state.showEditForm ?
