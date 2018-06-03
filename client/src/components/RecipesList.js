@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Accordion } from 'react-bootstrap';
 import { Panel } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import { Jumbotron } from 'react-bootstrap';
 
 class RecipesList extends Component {
 
@@ -90,9 +91,12 @@ class RecipesList extends Component {
 
         return (
             <div>
+                <Jumbotron>
                 <h1>Recipe List</h1>
-                <h4>{RecipesList}</h4>
                 <Link to='/'><Button bsStyle="info">Home</Button></Link>
+                </Jumbotron>
+                <h4>{RecipesList}</h4>
+               
                 <Button bsStyle="success" onClick={this.toggleShowNewForm}>Add New Recipe</Button>
 
                 {this.state.showNewForm ?

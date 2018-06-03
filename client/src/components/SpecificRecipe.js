@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { Jumbotron } from 'react-bootstrap';
 
 class SpecificRecipe extends Component {
 
@@ -59,10 +60,13 @@ class SpecificRecipe extends Component {
     render() {
         return (
             <div>
+                <Jumbotron>
                 <h1>SpecificRecipe</h1>
+                <Link to='/'><Button bsStyle="info">Home</Button></Link>
+                </Jumbotron>
                 <h4>{this.state.recipe.name}</h4>
                 <h6>{this.state.recipe.story}</h6>
-                <Link to='/'><Button bsStyle="info">Home</Button></Link>
+                
                 <Link to={`/recipes/${this.state.recipe.id}/procedures`}><Button bsStyle="info">Click to see how to make it</Button></Link>
                 <Button bsStyle="success" onClick={this.toggleShowEditForm}>Update Recipe</Button>
                 {this.state.showEditForm ?

@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import NewComment from './NewComment';
+import { Jumbotron } from 'react-bootstrap';
 
 class RecipeProcedure extends Component {
     state = {
-        recipes: [],
         procedures: [],
         comments: [],
         showNewForm: false
@@ -88,9 +88,14 @@ class RecipeProcedure extends Component {
 
         return (
             <div>
+                <Jumbotron>
                 <h1>RecipeProcedure</h1>
+                <Link to='/'><Button bsStyle="info">Home</Button></Link>
+                </Jumbotron>
                 {procedureData}
+                <Jumbotron>
                 <h1>Comments</h1>
+                </Jumbotron>
                 <Button bsStyle="success" onClick={this.toggleShowNewForm}>Post a Comment</Button>
                 {this.state.showNewForm ? <NewComment toggleShowNewForm={this.toggleShowNewForm} recipeId={this.props.match.params.recipe_id} getProcedureAndCommentData={this.getProcedureAndCommentData}/> : null}
                 {commentData}
