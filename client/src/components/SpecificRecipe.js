@@ -63,7 +63,7 @@ class SpecificRecipe extends Component {
             <div>
                 <Jumbotron>
                 <ButtonStyle>
-                <h1>SpecificRecipe</h1>
+                <h1>Story behind this Specific Recipe !</h1>
                     <Link to='/'><Button bsStyle="info">Home</Button></Link>
                 </ButtonStyle>
                 </Jumbotron>

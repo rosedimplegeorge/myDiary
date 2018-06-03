@@ -96,7 +96,7 @@ class RecipesList extends Component {
             <div>
                 <Jumbotron>
                 <ButtonStyle>
-                <h1>Recipe List</h1>
+                <h1>Recipe I have so far !</h1>
                 <Link to='/'><Button bsStyle="info">Home</Button></Link>
                 </ButtonStyle>
                 </Jumbotron>

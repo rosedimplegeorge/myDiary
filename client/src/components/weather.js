@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
 import { Row} from 'react-bootstrap';
 import WeatherStyle from './styledComponents/WeatherStyle'
+import axios from 'axios'
 
 class Weather extends Component {
+
+    state = {
+
+        currentWeather: ''
+
+    }
+
+    componentDidMount(){
+        
+
+        
+    
+    }
+
+    
+  
+
     render(){
         return(
             <div>

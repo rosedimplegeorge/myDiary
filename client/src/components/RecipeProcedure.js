@@ -82,7 +82,9 @@ class RecipeProcedure extends Component {
                 <div key={index}>
                     <h2>{comment.reviewer_name}</h2>
                     <h4>{comment.review}</h4>
-                    <Button bsStyle="danger" onClick={() => {this.removeComment(comment)}}>Delete Comment</Button>
+                    <ButtonStyle>
+                        <Button bsStyle="danger" onClick={() => {this.removeComment(comment)}}>Delete Comment</Button>
+                    </ButtonStyle>
                 </div>
             )
         })
@@ -91,19 +93,21 @@ class RecipeProcedure extends Component {
             <div>
                 <Jumbotron>
                 <ButtonStyle>
-                <h1>RecipeProcedure</h1> 
+                    <h1>This is How I made it !</h1> 
                 <Link to='/'><Button bsStyle="info">Home</Button></Link>
                 </ButtonStyle>
                 </Jumbotron>
-                {procedureData}
+                    {procedureData}
                 <Jumbotron>
-                <ButtonStyle>
-                <h1>Comments</h1>
-                </ButtonStyle>
+                    <ButtonStyle>
+                        <h1>Comments</h1>
+                    </ButtonStyle>
                 </Jumbotron>
-                <Button bsStyle="success" onClick={this.toggleShowNewForm}>Post a Comment</Button>
-                {this.state.showNewForm ? <NewComment toggleShowNewForm={this.toggleShowNewForm} recipeId={this.props.match.params.recipe_id} getProcedureAndCommentData={this.getProcedureAndCommentData}/> : null}
-                {commentData}
+                <ButtonStyle>
+                    <Button bsStyle="success" onClick={this.toggleShowNewForm}>Post a Comment</Button>
+                        {this.state.showNewForm ? <NewComment toggleShowNewForm={this.toggleShowNewForm} recipeId={this.props.match.params.recipe_id} getProcedureAndCommentData={this.getProcedureAndCommentData}/> : null}
+                    </ButtonStyle>
+                        {commentData}
             </div>
         );
     }
