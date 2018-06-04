@@ -70,6 +70,19 @@ class RecipeProcedure extends Component {
             })
     }
 
+    removeProcedure = (procedure) => {
+        console.log('Renove Procedure function is called ')
+        axios.delete(`/api/recipes/${procedure.recipe_id}/procedures/${procedure.id}`)
+            .then(() => {
+                this.getProcedureAndCommentData(procedure.recipe_id)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+
+
     render() {
         console.log(this.state.procedures)
         // const procedureId = this.props.match.params.recipe_id;
@@ -81,6 +94,9 @@ class RecipeProcedure extends Component {
                     <ImageStyle>
                     <img src={procedure.photo_url} alt="404NotFound" />
                     </ImageStyle>
+                    <ButtonStyle>
+                        <Button bsStyle="danger" onClick={() => {this.removeProcedure(procedure)}}>Delete Procedure</Button>
+                    </ButtonStyle>
                 </div>
             )
         })
