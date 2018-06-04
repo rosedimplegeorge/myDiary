@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import WeatherStyle from './styledComponents/WeatherStyle'
 import axios from 'axios'
 
-class Weather extends Component {
+class WeatherComponent extends Component {
 
     state = {
 
@@ -35,4 +35,4 @@ class Weather extends Component {
     }
 }
 
-export default Weather
+export default WeatherComponent
