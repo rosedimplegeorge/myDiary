@@ -7,13 +7,15 @@ import NewComment from './NewComment';
 import { Jumbotron } from 'react-bootstrap';
 import ButtonStyle from './styledComponents/ButtonStyle';
 import DivStyle from './styledComponents/DivStyle';
-import TextStyle from './styledComponents/TextStyle'
+import TextStyle from './styledComponents/TextStyle';
+import NewProcedure from './NewProcedure';
 
 class RecipeProcedure extends Component {
     state = {
         procedures: [],
         comments: [],
-        showNewForm: false
+        showNewForm: false,
+        showNewProcedureForm: false
     }
 
     componentDidMount(){
@@ -40,6 +42,10 @@ class RecipeProcedure extends Component {
 
     toggleShowNewForm = () => {
         this.setState({ showNewForm: !this.state.showNewForm })
+    }
+
+    toggleShowNewProcedureForm = () => {
+        this.setState({ showNewProcedureForm: !this.state.showNewProcedureForm })
     }
 
     createPost = (newComment) => {
@@ -100,6 +106,10 @@ class RecipeProcedure extends Component {
                 <Link to='/'><Button bsStyle="info">Home</Button></Link>
                 </ButtonStyle>
                 </Jumbotron>
+                <ButtonStyle>
+                    <Button bsStyle="success" onClick={this.toggleShowNewProcedureForm}>Post a New Procedure</Button>
+                        {this.state.showNewProcedureForm ? <NewProcedure toggleShowNewProcedureForm={this.toggleShowNewProcedureForm} recipeId={this.props.match.params.recipe_id} getProcedureAndCommentData={this.getProcedureAndCommentData}/> : null}
+                    </ButtonStyle>
                 <TextStyle>
                     {procedureData}
                 </TextStyle>
