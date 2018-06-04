@@ -2,7 +2,7 @@
 
 ## My Diary - Full-Stack Application
 
-### About this project:
+## About this project:
 
     The Idea behind this project was , to create a full stack application as me as an end user to Keep my Recipes (for now),Trips and Photos and My Skills and keep add any updates on the way . I also used REACT calendar and called the Weather API to see the current temperatute . Currently I used the WOEID of GA- Fulton County while calling the External Weather API .
 
