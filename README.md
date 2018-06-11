@@ -1,4 +1,4 @@
-# My Diary
+# My Diary - Full-Stack Application Built on Ruby on rails, PostgreSql,and React
 
 ## My Diary - Full-Stack Application
 
